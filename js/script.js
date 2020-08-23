@@ -1,24 +1,17 @@
 let body = document.getElementById("main");
+let screen = document.getElementsByClassName("screen")[0];
 let button = document.getElementById("button");
 
-let random;
-
-randomNumbers = () => {
-    let random = Math.floor(Math.random() * 255);
-    return random;
-};
+let randomNumber = (randomNumbers = () => {
+  let random = Math.floor(Math.random() * 255);
+  return random;
+});
 
 backGroundChanger = () => {
-  body.style.backgroundColor = "rgb(" + randomNumbers() + "," + randomNumbers() + "," + randomNumbers() + ")";
+  let rgbCode = randomNumber() + "," + randomNumber() + "," + randomNumber();
+  body.style.backgroundColor = `rgb(${rgbCode})`;
+  screen.innerText = `Rgb Code (${rgbCode})`;
+  button.setAttribute("class", "button");
 };
 
-buttonbackGroundChanger = () => {
-    button.setAttribute('class', "button")
-};
-
-startBackgroundChange = () => {
-    backGroundChanger();
-    buttonbackGroundChanger();
-}
-
-button.addEventListener("click", startBackgroundChange);
+button.addEventListener("click", backGroundChanger);
